@@ -79,7 +79,7 @@ export default function TeamDashboard() {
             className="flex items-center cursor-pointer justify-center gap-2 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             <Plus className="w-5 h-5" />
-            Add User
+            Add Member
           </button>
         </div>
 

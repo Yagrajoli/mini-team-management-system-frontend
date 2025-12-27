@@ -62,98 +62,118 @@ export const AddUserForm = ({ onClose, onSuccess }: AddUserFormProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white/95 backdrop-blur-md rounded-lg shadow-xl max-w-2xl w-full">
-        <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Add New User</h2>
-          <button title='close' onClick={onClose} className="p-2 cursor-pointer hover:bg-gray-100  rounded-full transition-colors">
-            <X className="w-5 h-5 text-gray-600" />
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div 
+        className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full animate-in fade-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="border-b border-gray-100 px-6 py-5 flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Add New Member</h2>
+            <p className="text-sm text-gray-500 mt-0.5">Fill in the details below</p>
+          </div>
+          <button title='close' onClick={onClose} className="p-2 cursor-pointer hover:bg-gray-100 rounded-full transition-colors">
+            <X className="w-5 h-5 text-gray-500" />
           </button>
         </div>
         
         <form onSubmit={handleSubmit(onSubmit)} className="p-6">
-          <div className="grid lg:grid-cols-2 grid-cols-1  gap-4">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
               <input
                 type="text"
+                placeholder="John Doe"
                 {...register('name')}
-                className={`w-full px-3 py-2 text-black border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none ${
-                  errors.name ? 'border-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-2.5 text-gray-900 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all ${
+                  errors.name ? 'border-red-400 bg-red-50' : 'border-gray-200'
                 }`}
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+              {errors.name && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><span>⚠</span>{errors.name.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email <span className="text-red-500">*</span></label>
               <input
                 type="email"
+                placeholder="john@company.com"
                 {...register('email')}
-                className={`w-full px-3 py-2 text-black border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-2.5 text-gray-900 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all ${
+                  errors.email ? 'border-red-400 bg-red-50' : 'border-gray-200'
                 }`}
               />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+              {errors.email && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><span>⚠</span>{errors.email.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Company Name *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Company <span className="text-red-500">*</span></label>
               <input
                 type="text"
+                placeholder="Acme Inc."
                 {...register('companyName')}
-                className={`w-full px-3 py-2 text-black border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none ${
-                  errors.companyName ? 'border-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-2.5 text-gray-900 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all ${
+                  errors.companyName ? 'border-red-400 bg-red-50' : 'border-gray-200'
                 }`}
               />
-              {errors.companyName && <p className="text-red-500 text-sm mt-1">{errors.companyName.message}</p>}
+              {errors.companyName && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><span>⚠</span>{errors.companyName.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone</label>
               <input
                 type="number"
+                placeholder="+977 1234567890"
                 {...register('phone')}
-                className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Website</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Website</label>
               <input
-                type="text"
+                type="url"
+                placeholder="https://example.com"
                 {...register('website')}
-                className={`w-full px-3 py-2 text-black border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none ${
-                  errors.website ? 'border-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-2.5 text-gray-900 bg-gray-50 border rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all ${
+                  errors.website ? 'border-red-400 bg-red-50' : 'border-gray-200'
                 }`}
               />
-              {errors.website && <p className="text-red-500 text-sm mt-1">{errors.website.message}</p>}
+              {errors.website && <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1"><span>⚠</span>{errors.website.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">City</label>
               <input
                 type="text"
+                placeholder="New York"
                 {...register('city')}
-                className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2.5 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 focus:bg-white outline-none transition-all"
               />
             </div>
           </div>
 
-          <div className="flex gap-3 pt-6">
+          <div className="flex gap-3 pt-6 border-t border-gray-100 mt-6">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 cursor-pointer text-black border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex-1 px-4 py-2.5 cursor-pointer text-gray-700 font-medium bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-4 py-2 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="flex-1 px-4 py-2.5 cursor-pointer bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-600/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Adding...' : 'Add User'}
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                  </svg>
+                  Adding...
+                </span>
+              ) : 'Add Member'}
             </button>
           </div>
         </form>

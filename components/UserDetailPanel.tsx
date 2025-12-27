@@ -76,8 +76,7 @@ export const UserDetailPanel = ({ user, onClose }: UserDetailPanelProps) => (
               <p className="text-gray-900">
                 {user.address.suite}, {user.address.street}
               </p>
-                )
-              }
+                ) }
               <p className="text-gray-900">
                 {user.address.city}, {user.address.zipcode}
               </p>
